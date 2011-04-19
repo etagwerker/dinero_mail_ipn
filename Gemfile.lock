@@ -1,0 +1,19 @@
+PATH
+  remote: .
+  specs:
+    dinero_mail_ipn (0.0.1)
+      httparty (~> 0.7.6)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    crack (0.1.8)
+    httparty (0.7.6)
+      crack (= 0.1.8)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  dinero_mail_ipn!
+  httparty (~> 0.7.6)
