@@ -4,5 +4,14 @@ Sirve para consumir los metodos de IPN 1 y IPN 2.
 
 Por ejemplo: 
 
-c = DineroMailIpn::Client.new(:email => 'EMAILPRUEBA@gmail.com', :account => '09813581', :pin => 'URJYRLU2PP')
-c.consulta_pago(before,now) # before y now son Dates
+  #IPN v1
+  c = DineroMailIpn::Client.new(:email => 'EMAILPRUEBA@gmail.com', :account => '09813581', :pin => 'URJYRLU2PP')
+  c.consulta_pago(before,now) # before y now son Dates
+  #Response
+  {"Report"=>{"Email"=>"EMAILPRUEBA@gmail.com", "Acount"=>"09813581", "Pin"=>"URJYRLU2PP", "StartDate"=>"20110419", "EndDate"=>"20110419", "XML"=>"1", "State"=>"2", "Pays"=>nil, "Collections"=>nil, "Tickets"=>nil, "Reception"=>nil, "Retreats"=>nil, "Credits"=>nil, "Debits"=>nil}} 
+
+  #IPN v2
+  c = DineroMailIpn::Client.new(:account => '09813581', :password => 'mipassword)
+  c.consulta_transacciones("31548", "XA5547")
+  #Response
+  {"REPORTE"=>{"ESTADOREPORTE"=>"8", "DETALLE"=>{"OPERACIONES"=>nil}}}
