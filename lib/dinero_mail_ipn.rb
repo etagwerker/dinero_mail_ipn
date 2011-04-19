@@ -22,7 +22,6 @@ module DineroMailIpn
     end
     
     def default_params
-      debugger
       {:XML => 1, :Acount => @account, :Pin => @pin, :Email => @email}
     end
     
