@@ -1,0 +1,8 @@
+= Dinero Mail IPN Gem
+
+Sirve para consumir los metodos de IPN 1 y IPN 2. 
+
+Por ejemplo: 
+
+c = DineroMailIpn::Client.new(:email => 'EMAILPRUEBA@gmail.com', :account => '09813581', :pin => 'URJYRLU2PP')
+c.consulta_pago(before,now) # before y now son Dates
