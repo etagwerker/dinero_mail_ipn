@@ -1,26 +1,29 @@
 require 'httparty'
 require 'nokogiri'
 
+# require all files in dinero_mail_ipn
+Dir[File.join(File.dirname(__FILE__),'dinero_mail_ipn', '*')].each {|file| require file }
+
 module DineroMailIpn
   class Client
     include HTTParty
     format :xml
     attr_reader :email, :account, :pin, :pais, :password
 
-    DEFAULT_PAIS = 'argentina'
+    DEFAULT_COUNTRY = 'argentina'
     
     def initialize(opts)
       @email = opts[:email]
       @account = opts[:account]
       @pin = opts[:pin]
       @password = opts[:password]
-      @pais = opts[:pais] || DEFAULT_PAIS
+      @pais = opts[:pais] || DEFAULT_COUNTRY
     end
 
     # devuelve una response
     def consulta_pago(start_date, end_date)
       params = default_params.merge({:StartDate => format_date(start_date), :EndDate => format_date(end_date)})
-      self.class.get("https://#{@pais}.dineromail.com/vender/ConsultaPago.asp", :query => params).parsed_response
+      ConsultaPagoResponse.new(self.class.get("https://#{@pais}.dineromail.com/vender/ConsultaPago.asp", :query => params).parsed_response)
     end
 
     def default_params
@@ -59,5 +62,3 @@ module DineroMailIpn
   end
 
 end
-
-  # DineroMail::Ipn.consulta_ipn()
