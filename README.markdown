@@ -15,16 +15,28 @@ Ruby gem para consumir los metodos de IPN 1 y IPN 2.
     require 'dinero_mail_ipn'
 
 ### IPN v1
-    c = DineroMailIpn::Client.new(:email => 'EMAILPRUEBA@gmail.com', :account => '09813581', :pin => 'URJYRLU2PP')
-    c.consulta_pago(before,now) # before y now son Dates
-    # Response
-    {"Report"=>{"Email"=>"EMAILPRUEBA@gmail.com", "Acount"=>"09813581", "Pin"=>"URJYRLU2PP", "StartDate"=>"20110419", "EndDate"=>"20110419", "XML"=>"1", "State"=>"2", "Pays"=>nil, "Collections"=>nil, "Tickets"=>nil, "Reception"=>nil, "Retreats"=>nil, "Credits"=>nil, "Debits"=>nil}} 
+    > client = DineroMailIpn::Client.new(:email => 'EMAILPRUEBA@gmail.com', :account => '17128254', :pin => 'AYCN7IXDTM')
+    => #<DineroMailIpn::Client:0x5e3120 @email="EMAILPRUEBA@gmail.com", @account="17128254", @pin="AYCN7IXDTM", @password=nil, @pais="argentina">    
+    > response = client.consulta_pago(Date.today.prev_month, Date.today)
+     => #<DineroMailIpn::ConsultaPagoResponse:0x5f9600 @hash={"Report"=>{"Email"=>"EMAILPRUEBA@gmail.com", "Acount"=>"17128254", "Pin"=>nil, "StartDate"=>"20110603", "EndDate"=>"20110703", "XML"=>"1", "State"=>"1", "Pays"=>nil, "Collections"=>nil, "Tickets"=>nil, "Receptions"=>nil, "Retreats"=>nil, "Credits"=>nil, "Debits"=>nil}}> 
+    > response.state
+     => "1" 
+    > response.state_description
+     => "La consulta se realizó correctamente" 
+    > response.hash["Pays"]
+     => nil     
 
 ### IPN v2
     c = DineroMailIpn::Client.new(:account => '09813581', :password => 'mipassword)
     c.consulta_transacciones("31548", "XA5547")
     # Response
     {"REPORTE"=>{"ESTADOREPORTE"=>"8", "DETALLE"=>{"OPERACIONES"=>nil}}}
+
+## Roadmap
+
+* Agregar más información a los wrappers de cada respuesta de Dinero Mail. Así facilitar el consumo de la API de Dinero Mail IPN. 
+* Agregar más tests que testeen las posibles respuestas de Dinero Mail IPN
+* Agregar más documentación y ejemplos
 
 ## Patches/Pull Requests
 
