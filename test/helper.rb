@@ -1,6 +1,7 @@
 require 'test/unit'
 require 'shoulda'
 require 'fakeweb'
+require File.expand_path('../../lib/dinero_mail_ipn', __FILE__)
 
 FakeWeb.allow_net_connect = false
 

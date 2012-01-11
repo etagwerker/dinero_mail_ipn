@@ -1,7 +1,6 @@
 # encoding: utf-8
 
-require 'helper'
-require 'dinero_mail_ipn'
+require File.expand_path('../helper', __FILE__)
 
 class TestDineroMailIpn < Test::Unit::TestCase
 
@@ -28,15 +27,29 @@ class TestDineroMailIpn < Test::Unit::TestCase
   end
 
   context "when I query for some transactions" do
+    
+    should "return a new report object" do
+      stub_post("/Vender/Consulta_IPN.asp", "ConsultaTransacciones1-2Success.xml",
+                  {:url => {:https => false}})
 
+      client = DineroMailIpn::Client.new(:password => 'fuckingipnpasswordinplaintext', :account => '17128254')
+      reporter = client.consulta_transacciones(1,2)
+      assert reporter.kind_of?(DineroMailIpn::Reporter)
+      assert_equal 2, reporter.reports.size
+    end
+
+  end
+  
+  context "when I query for a transactions" do
+    
     should "return a new report object" do
       stub_post("/Vender/Consulta_IPN.asp", "ConsultaTransacciones1Success.xml",
                   {:url => {:https => false}})
 
       client = DineroMailIpn::Client.new(:password => 'fuckingipnpasswordinplaintext', :account => '17128254')
-      response = client.consulta_transaccion("1")
-      assert response.kind_of?(DineroMailIpn::Report)
-      assert_equal 1, response.id
+      reporter = client.consulta_transacciones(1)
+      assert reporter.kind_of?(DineroMailIpn::Reporter)
+      assert_equal 1, reporter.reports.size
     end
 
   end

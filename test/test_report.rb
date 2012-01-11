@@ -1,48 +1,32 @@
 # encoding: utf-8
 
-require 'helper'
-require 'dinero_mail_ipn'
+require File.expand_path('../helper', __FILE__)
 
 class TestDineromailIpnReport < Test::Unit::TestCase
 
-  def test_invalid_report
-    xml_response = <<-XML
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<REPORTE>
-  <ESTADOREPORTE>2</ESTADOREPORTE>
-</REPORTE>
-XML
-    report = DineroMailIpn::Report.new(xml_response)
-    assert !report.valid?
-  end
-
-  def test_valid_report
-    xml_response = <<-XML
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<REPORTE>
-<ESTADOREPORTE>1</ESTADOREPORTE>
-</REPORTE>
-XML
-    report = DineroMailIpn::Report.new(xml_response)
-    assert report.valid?
-  end
-
   def test_report_id
-    xml_response = fixture_file("ConsultaTransacciones1Success.xml")
-    report = DineroMailIpn::Report.new(xml_response)
-    assert_equal 1, report.id
+    report = DineroMailIpn::Report.new(:id => 33)
+    assert_equal 33, report.id
   end
 
   def test_report_amount
-    xml_response = fixture_file("ConsultaTransacciones1Success.xml")
-    report = DineroMailIpn::Report.new(xml_response)
-    assert_equal 1010, report.amount
+    report = DineroMailIpn::Report.new(:amount => 3003)
+    assert_equal 3003, report.amount
   end
 
-  def test_report_completed
-    xml_response = fixture_file("ConsultaTransacciones1Success.xml")
-    report = DineroMailIpn::Report.new(xml_response)
+  def test_transaction_completed?
+    report = DineroMailIpn::Report.new(:state => 2)
     assert report.transaction_completed?
+  end
+
+  def test_transaction_pending?
+    report = DineroMailIpn::Report.new(:state => 1)
+    assert report.transaction_pending?
+  end
+
+  def test_transaction_cancelled?
+    report = DineroMailIpn::Report.new(:state => 3)
+    assert report.transaction_cancelled?
   end
 
 end

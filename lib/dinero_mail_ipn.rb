@@ -35,7 +35,7 @@ module DineroMailIpn
       a_date.strftime("%Y%m%d")
     end
 
-    def consulta_transaccion(transaction_id)
+    def consulta_transacciones(*transacciones)
       xml_builder = Nokogiri::XML::Builder.new do |xml|
         xml.REPORTE {
           xml.NROCTA @account
@@ -44,7 +44,9 @@ module DineroMailIpn
               xml.CLAVE @password
               xml.TIPO 1
               xml.OPERACIONES {
-                xml.ID transaction_id
+                transacciones.each do |transaction_id|
+                  xml.ID transaction_id
+                end
               }
             }
           }
@@ -56,7 +58,7 @@ module DineroMailIpn
 
       response = self.class.post("http://#{@pais}.dineromail.com/Vender/Consulta_IPN.asp", :body => "DATA=#{body}",
                                 :headers => {"Content-type" => "application/x-www-form-urlencoded", "Content-length" => "#{body.length}" }).response.body
-      DineroMailIpn::Report.new(response)
+      DineroMailIpn::Reporter.new(response)
     end
   end
 
