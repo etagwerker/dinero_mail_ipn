@@ -11,7 +11,7 @@ module DineroMailIpn
     attr_reader :email, :account, :pin, :pais, :password
 
     DEFAULT_COUNTRY = 'argentina'
-    
+
     def initialize(opts)
       @email = opts[:email]
       @account = opts[:account]
@@ -29,7 +29,7 @@ module DineroMailIpn
     def default_params
       {:XML => 1, :Acount => @account, :Pin => @pin, :Email => @email}
     end
-    
+
     # formatea una date a 20110201
     def format_date(a_date)
       a_date.strftime("%Y%m%d")
@@ -44,8 +44,8 @@ module DineroMailIpn
               xml.CLAVE @password
               xml.TIPO 1
               xml.OPERACIONES {
-                transacciones.each do |transaccion|
-                  xml.ID transaccion
+                transacciones.each do |transaction_id|
+                  xml.ID transaction_id
                 end
               }
             }
@@ -56,8 +56,9 @@ module DineroMailIpn
       body.sub!("<?xml version=\"1.0\"?>", "")
       body.gsub!(/\s/, '')
 
-      self.class.post("http://#{@pais}.dineromail.com/Vender/Consulta_IPN.asp", :body => "DATA=#{body}", 
-                       :headers => {"Content-type" => "application/x-www-form-urlencoded", "Content-length" => "#{body.length}" }).parsed_response
+      response = self.class.post("http://#{@pais}.dineromail.com/Vender/Consulta_IPN.asp", :body => "DATA=#{body}",
+                                :headers => {"Content-type" => "application/x-www-form-urlencoded", "Content-length" => "#{body.length}" }).response.body
+      DineroMailIpn::Reporter.new(response)
     end
   end
 

@@ -28,9 +28,13 @@ Ruby gem para consumir los metodos de IPN 1 y IPN 2.
 
 ### IPN v2
     c = DineroMailIpn::Client.new(:account => '09813581', :password => 'mipassword)
-    c.consulta_transacciones("31548", "XA5547")
-    # Response
-    {"REPORTE"=>{"ESTADOREPORTE"=>"8", "DETALLE"=>{"OPERACIONES"=>nil}}}
+    report = c.consulta_transaccion("31548")
+    report.id
+    # 1
+    report.amount
+    # 2999
+    report.valid?
+    # true
 
 ## Roadmap
 
