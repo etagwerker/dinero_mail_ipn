@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<REPORTE>
+  <ESTADOREPORTE>1</ESTADOREPORTE>
+  <DETALLE>
+    <OPERACIONES>
+      <OPERACION>
+        <ID>1</ID>
+        <FECHA>12/29/2011 7:38:00 PM</FECHA>
+        <ESTADO>2</ESTADO>
+        <COMPRADOR>
+          <EMAIL>email@customer.com</EMAIL>
+          <DIRECCION/>
+          <COMENTARIO/>
+        </COMPRADOR>
+        <MONTO>1010</MONTO>
+        <MONTONETO>510</MONTONETO>
+        <METODOPAGO>3</METODOPAGO>
+        <ITEMS>
+          <ITEM>
+            <DESCRIPCION>Camiseta amarilla</DESCRIPCION>
+            <MONEDA>1</MONEDA>
+            <PRECIOUNITARIO>1010</PRECIOUNITARIO>
+            <CANTIDAD>1</CANTIDAD>
+          </ITEM>
+        </ITEMS>
+      </OPERACION>
+      <OPERACION>
+        <ID>2</ID>
+        <FECHA>12/30/2011 17:38:00 PM</FECHA>
+        <ESTADO>2</ESTADO>
+        <COMPRADOR>
+          <EMAIL>other-email@other-customer.com</EMAIL>
+          <DIRECCION/>
+          <COMENTARIO/>
+        </COMPRADOR>
+        <MONTO>2000</MONTO>
+        <MONTONETO>710</MONTONETO>
+        <METODOPAGO>3</METODOPAGO>
+        <ITEMS>
+          <ITEM>
+            <DESCRIPCION>Sombrero rojo</DESCRIPCION>
+            <MONEDA>1</MONEDA>
+            <PRECIOUNITARIO>1000</PRECIOUNITARIO>
+            <CANTIDAD>2</CANTIDAD>
+          </ITEM>
+        </ITEMS>
+      </OPERACION>
+    </OPERACIONES>
+  </DETALLE>
+</REPORTE>
