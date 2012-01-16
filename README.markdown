@@ -48,7 +48,7 @@ Consulta de reportes para transacciones específicas.
 
 ## Documentación
 
-Ver: [http://rubydoc.info/github/etagwerker/dinero\_mail\_ipn/master/frames](http://rubydoc.info/github/etagwerker/dinero_mail_ipn/master/frames)
+Ver: [http://rubydoc.info/github/etagwerker/dinero_mail_ipn/master/frames](http://rubydoc.info/github/etagwerker/dinero_mail_ipn/master/frames)
 
 Si falta algo, por favor reportarlo como issue.
 
