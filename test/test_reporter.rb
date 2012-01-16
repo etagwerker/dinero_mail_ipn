@@ -14,7 +14,7 @@ XML
     reporter = DineroMailIpn::Reporter.new(xml_response)
     assert !reporter.valid?
   end
-  
+
   def test_invalid_report_should_has_no_reports
     xml_response = <<-XML
 <?xml version="1.0" encoding="ISO-8859-1"?>
