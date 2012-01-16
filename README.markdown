@@ -14,7 +14,7 @@ Ruby gem para consumir los métodos de IPN 1 y IPN 2.
 
     require 'dinero_mail_ipn'
 
-## IPN v1
+### IPN v1
 
 Consulta de pagos en períodos de una semana. 
 
