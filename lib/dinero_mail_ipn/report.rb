@@ -1,29 +1,52 @@
-# coding: UTF-8
-
+# encoding: UTF-8
 module DineroMailIpn
+
+  # # Reporte por transacción
+  #
+  # Nos dice el estado de la transacción, el ID y el monto de la misma.
+  #
+  # ## Posibles estados
+  #
+  # * Pendiente (Report::PENDING_STATUS)
+  # * Cancelado (Report::CANCELLED_STATUS)
+  # * Completado (Report::COMPLETED_STATUS)
+  #
   class Report
-    
-    # Transaction status list
+
+    # Posibles estados de transacciones
     PENDING_STATUS = 1
     COMPLETED_STATUS = 2
     CANCELLED_STATUS = 3
-    
+
     attr_reader :id, :amount
-    
-    def initialize(attributes)
-      @id = attributes[:id]
-      @amount = attributes[:amount]
-      @state = attributes[:state]
+
+    # @param [Hash] opts opciones para crear la instancia
+    # @option opts [String] :id ID de transacción
+    # @option opts [String] :amount Monto de transacción (Por ej. "12.45")
+    # @option opts [String] :state Uno de los posibles estados
+    def initialize(opts)
+      @id = opts[:id]
+      @amount = opts[:amount]
+      @state = opts[:state]
     end
-    
+
+    # Devuelve true si la transacción fue completada
+    #
+    # @return [Boolean]
     def transaction_completed?
       @state == COMPLETED_STATUS
     end
 
+    # Devuelve true si la transacción está pendiente
+    #
+    # @return [Boolean]
     def transaction_pending?
       @state == PENDING_STATUS
     end
 
+    # Devuelve true si la transacción fue cancelada
+    #
+    # @return [Boolean]
     def transaction_cancelled?
       @state == CANCELLED_STATUS
     end

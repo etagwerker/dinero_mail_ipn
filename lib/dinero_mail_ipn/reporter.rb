@@ -1,4 +1,4 @@
-# coding: UTF-8
+# encoding: UTF-8
 
 module DineroMailIpn
   class Reporter
@@ -23,9 +23,9 @@ module DineroMailIpn
     def valid?
       @doc.xpath("//estadoreporte").first.content.to_i == VALID_REPORT_STATUS
     end
-    
+
     private
-    
+
     def build_reports
       return [] if @doc.xpath("//operacion").empty?
       @doc.xpath("//operacion").map do |report_xml|
@@ -34,6 +34,6 @@ module DineroMailIpn
                                   :state => report_xml.xpath("//estado").first.content.to_i 
       end
     end
-    
+
   end
 end
