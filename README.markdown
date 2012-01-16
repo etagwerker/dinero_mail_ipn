@@ -1,6 +1,7 @@
 # Dinero Mail IPN Gem
 
-Ruby gem para consumir los métodos de IPN 1 y IPN 2.
+Ruby gem para consumir los métodos de IPN 1 y IPN 2 de [Dinero
+Mail](http://dineromail.com)
 
 ## Instalación
 
