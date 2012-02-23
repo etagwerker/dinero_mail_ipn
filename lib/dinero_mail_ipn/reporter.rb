@@ -29,9 +29,9 @@ module DineroMailIpn
     def build_reports
       return [] if @doc.xpath("//operacion").empty?
       @doc.xpath("//operacion").map do |report_xml|
-        DineroMailIpn::Report.new :id => report_xml.xpath("//id").first.content.to_i,
-                                  :amount => report_xml.xpath("//monto").first.content.to_i,
-                                  :state => report_xml.xpath("//estado").first.content.to_i,
+        DineroMailIpn::Report.new :id => report_xml.search("id").text,
+                                  :amount => report_xml.search("monto").text.to_f,
+                                  :state => report_xml.search("estado").text,
                                   :payer_email => report_xml.search('comprador').search('email').text,
                                   :numtransaction => report_xml.search('numtransaccion').text
       end
@@ -39,3 +39,4 @@ module DineroMailIpn
 
   end
 end
+
