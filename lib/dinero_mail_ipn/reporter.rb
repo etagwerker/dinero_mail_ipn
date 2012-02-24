@@ -33,7 +33,8 @@ module DineroMailIpn
                                   :amount => report_xml.xpath("//monto").text.to_f,
                                   :state => report_xml.xpath("//estado").text,
                                   :payer_email => report_xml.xpath("//comprador").xpath("//email").text,
-                                  :numtransaction => report_xml.xpath("//numtransaccion").text
+                                  :numtransaction => report_xml.xpath("//numtransaccion").text,
+                                  :fecha          => report_xml.xpath("//fecha").text.to_time
       end
     end
 
