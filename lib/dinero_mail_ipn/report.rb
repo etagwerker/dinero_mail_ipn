@@ -18,7 +18,7 @@ module DineroMailIpn
     COMPLETED_STATUS = 2
     CANCELLED_STATUS = 3
 
-    attr_reader :id, :amount
+    attr_reader :id, :amount, :state, :payer_email, :numtransaction, :fecha
 
     # @param [Hash] opts opciones para crear la instancia
     # @option opts [String] :id ID de transacción
@@ -28,6 +28,9 @@ module DineroMailIpn
       @id = opts[:id]
       @amount = opts[:amount]
       @state = opts[:state]
+      @payer_email = opts[:payer_email]
+      @numtransaction = opts[:numtransaction]
+      @fecha          = opts[:fecha]
     end
 
     # Devuelve true si la transacción fue completada
