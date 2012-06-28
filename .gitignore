@@ -2,4 +2,5 @@ pkg/*
 *.gem
 .bundle
 .yardoc
+.rvmrc
 doc
