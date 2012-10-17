@@ -68,11 +68,13 @@ module DineroMailIpn
 
       @payments = []
       begin
-        pays = self.hash["Report"]["Pays"]
-
+        pays = self.hash["Report"]["Pays"]["Pay"]
         if pays
-          pays.each do |key, payment_hash|
-            @payments << Payment.new(payment_hash)
+          case pays.class.name
+          when "Hash"
+            @payments << Payment.new(pays)
+          when "Array"
+            pays.each { |pay| @payments << Payment.new(pay) }
           end
         end
       rescue Exception => e
@@ -81,7 +83,7 @@ module DineroMailIpn
       @payments
     end
 
-    # Devuelve el código de estado de la respuesta. 
+    # Devuelve el código de estado de la respuesta.
     #
     # Posibilidades: "0", "1" o "2".
     #
