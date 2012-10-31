@@ -34,7 +34,7 @@ module DineroMailIpn
                                   :state => report_xml.xpath("//estado").text,
                                   :payer_email => report_xml.xpath("//comprador").xpath("//email").text,
                                   :numtransaction => report_xml.xpath("//numtransaccion").text,
-                                  :fecha          => report_xml.xpath("//fecha").text.to_time
+                                  :date => Chronic.parse(report_xml.xpath("//fecha").text)
       end
     end
 
