@@ -3,7 +3,8 @@ module DineroMailIpn
 
   # # Reporte por transacción
   #
-  # Nos dice el estado de la transacción, el ID y el monto de la misma.
+  # Nos dice el estado de la transacción, el ID, quién pagó, el número
+  # de transacción, la fecha y el monto de la misma.
   #
   # ## Posibles estados
   #
@@ -18,7 +19,7 @@ module DineroMailIpn
     COMPLETED_STATUS = 2
     CANCELLED_STATUS = 3
 
-    attr_reader :id, :amount, :state, :payer_email, :numtransaction, :fecha
+    attr_reader :id, :amount, :state, :payer_email, :numtransaction, :date
 
     # @param [Hash] opts opciones para crear la instancia
     # @option opts [String] :id ID de transacción
@@ -30,7 +31,7 @@ module DineroMailIpn
       @state = opts[:state]
       @payer_email = opts[:payer_email]
       @numtransaction = opts[:numtransaction]
-      @fecha          = opts[:fecha]
+      @date          = opts[:date]
     end
 
     # Devuelve true si la transacción fue completada
