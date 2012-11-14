@@ -21,8 +21,8 @@ module DineroMailIpn
   class Item
 
     # @private
-    def initialize(hash)
-      @hash = hash
+    def initialize(_h)
+      @hash = _h
     end
 
     # Devuelve un {String} o nil

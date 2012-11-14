@@ -25,8 +25,8 @@ module DineroMailIpn
   class Payment
 
     # @private
-    def initialize(hash)
-      @hash = hash
+    def initialize(_h)
+      @hash = _h
     end
 
     # Devuelve un {String} o nil
@@ -43,8 +43,8 @@ module DineroMailIpn
       @items = []
 
       unless @hash["Items"].nil?
-        @hash["Items"].each do |key, hash|
-          @items << Item.new(hash)
+        @hash["Items"].each do |key, _h|
+          @items << Item.new(_h)
         end
       end
 
