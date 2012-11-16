@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Report>
+  <Email>ernesto@ombushop.com</Email>
+  <Acount>17128254</Acount>
+  <Pin>AYCN7IXDTM</Pin>
+  <StartDate>20110620</StartDate>
+  <EndDate>20110703</EndDate>
+  <XML>1</XML>
+  <State>1</State>
+  <Pays>
+    <Pay trx_id="R163000000">
+      <Trx_Date>2011-12-20 05:44:56</Trx_Date>
+      <Trx_NombreComprador>Juan Perez</Trx_NombreComprador>
+      <Trx_Email>juanperez@ombushop.com</Trx_Email>
+      <Trx_Payment>108.00</Trx_Payment>
+      <Trx_ShipAddress></Trx_ShipAddress>
+      <Trx_Comment></Trx_Comment>
+      <Trx_MontoNeto>100.97</Trx_MontoNeto>
+      <Trx_SellerDocumentType>DNI</Trx_SellerDocumentType>
+      <Trx_SellerDocumentNumber>26.000.000</Trx_SellerDocumentNumber>
+      <Trx_Number>12345678</Trx_Number>
+      <Trx_PaymentMethod>Codigo de Barras</Trx_PaymentMethod>
+      <Trx_PaymentMean>Pago Facil</Trx_PaymentMean>
+      <Trx_BuyerDocumentType>DNI</Trx_BuyerDocumentType>
+      <Trx_BuyerDocumentNumber>26000000</Trx_BuyerDocumentNumber>
+      <Trx_BuyerPhone>+540351844232</Trx_BuyerPhone>
+      <Items>
+        <Item Item_Code="SKU123">
+          <Item_Quantity>1</Item_Quantity>
+          <Item_Description>Zapatos de Cuero</Item_Description>
+          <Item_Payment>68.00</Item_Payment>
+        </Item>
+      </Items>
+    </Pay>
+    <Pay trx_id="R163000001">
+      <Trx_Date>2011-12-21 05:44:56</Trx_Date>
+      <Trx_NombreComprador>Derp Herp</Trx_NombreComprador>
+      <Trx_Email>derp_herp@ombushop.com</Trx_Email>
+      <Trx_Payment>108.00</Trx_Payment>
+      <Trx_ShipAddress></Trx_ShipAddress>
+      <Trx_Comment></Trx_Comment>
+      <Trx_MontoNeto>100.97</Trx_MontoNeto>
+      <Trx_SellerDocumentType>DNI</Trx_SellerDocumentType>
+      <Trx_SellerDocumentNumber>25.000.000</Trx_SellerDocumentNumber>
+      <Trx_Number>12345679</Trx_Number>
+      <Trx_PaymentMethod>Codigo de Barras</Trx_PaymentMethod>
+      <Trx_PaymentMean>Pago Facil</Trx_PaymentMean>
+      <Trx_BuyerDocumentType>DNI</Trx_BuyerDocumentType>
+      <Trx_BuyerDocumentNumber>25000000</Trx_BuyerDocumentNumber>
+      <Trx_BuyerPhone>+540351844231</Trx_BuyerPhone>
+      <Items>
+        <Item Item_Code="SKU123">
+          <Item_Quantity>1</Item_Quantity>
+          <Item_Description>Zapatos de Cuero</Item_Description>
+          <Item_Payment>68.00</Item_Payment>
+        </Item>
+      </Items>
+    </Pay>
+  </Pays>
+  <Collections />
+  <Tickets />
+  <Receptions />
+  <Retreats />
+  <Credits />
+  <Debits />
+</Report>
+
+<!-- client = DineroMailIpn::Client.new(email: "isaac.attie@cir-med.com", account: "21353370", pin: "BZLOG9UB72")
+params = {:XML => 1, :Acount => "21353370", :Pin => "BZLOG9UB72", :Email => "isaac.attie@cir-med.com"}.merge({:StartDate => client.format_date(Date.today - 7), :EndDate => client.format_date(Date.today)})
+xml = client.class.get("https://argentina.dineromail.com/vender/ConsultaPago.asp", :query => params) -->

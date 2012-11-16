@@ -17,25 +17,49 @@ class TestDineroMailIpn < Test::Unit::TestCase
       assert_equal response.state_description, "La consulta se realizó correctamente"
     end
 
-    should "return OK with a collection of payments" do
+    should "return OK with 1 payment" do
       stub_get("/vender/ConsultaPago.asp?XML=1&Acount=17128254&Pin=AYCN7IXDTM&Email=ernesto%40ombushop.com&StartDate=20110702&EndDate=20110703",
-         "ConsultaPagoOkWithPays.xml")
+         "ConsultaPagoOKWith1Pay.xml")
       client = DineroMailIpn::Client.new(:email => 'ernesto@ombushop.com',
                                           :account => '17128254',
                                           :pin => 'AYCN7IXDTM')
       response = client.consulta_pago(Date.new(2011,7,2), Date.new(2011,7,3))
-      assert_equal response.state, "1"
+      assert_equal "1", response.state
+      assert_equal 1, response.payments.size
+      assert response.ok?
+      assert_equal "La consulta se realizó correctamente", response.state_description
+      assert !response.payments.empty?
+      payment = response.payments.first
+      assert_equal "juanperez@ombushop.com", payment["Trx_Email"]
+      assert_equal "R163000000", payment["trx_id"]
+      assert payment["Trx_Numbr"].nil?
+      assert !payment.items.empty?
+      item = payment.items.first
+      assert_equal "SKU123", item["Item_Code"]
+      assert_equal "68.00", item["Item_Payment"]
+      assert item["item_quantity"].nil?
+    end
+
+    should "return OK with 2 payments" do
+      stub_get("/vender/ConsultaPago.asp?XML=1&Acount=17128254&Pin=AYCN7IXDTM&Email=ernesto%40ombushop.com&StartDate=20110702&EndDate=20110703",
+         "ConsultaPagoOKWith2Pays.xml")
+      client = DineroMailIpn::Client.new(:email => 'ernesto@ombushop.com',
+                                          :account => '17128254',
+                                          :pin => 'AYCN7IXDTM')
+      response = client.consulta_pago(Date.new(2011,7,2), Date.new(2011,7,3))
+      assert_equal "1", response.state
+      assert_equal 2, response.payments.size
       assert response.ok?
       assert_equal response.state_description, "La consulta se realizó correctamente"
       assert !response.payments.empty?
       payment = response.payments.first
-      assert_equal payment["Trx_Email"], "juanperez@ombushop.com"
-      assert_equal payment["trx_id"], "R163000000"
+      assert_equal "juanperez@ombushop.com", payment["Trx_Email"]
+      assert_equal "R163000000", payment["trx_id"]
       assert payment["Trx_Numbr"].nil?
       assert !payment.items.empty?
       item = payment.items.first
-      assert_equal item["Item_Code"], "SKU123"
-      assert_equal item["Item_Payment"], "68.00"
+      assert_equal "SKU123", item["Item_Code"]
+      assert_equal "68.00", item["Item_Payment"]
       assert item["item_quantity"].nil?
     end
 
