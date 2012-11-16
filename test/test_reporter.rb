@@ -15,7 +15,7 @@ XML
     assert !reporter.valid?
   end
 
-  def test_invalid_report_should_has_no_reports
+  def test_invalid_report_should_have_no_reports
     xml_response = <<-XML
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <REPORTE>
@@ -50,7 +50,9 @@ XML
     reporter = DineroMailIpn::Reporter.new(xml_response)
     assert_equal 1, reporter.reports.size
     assert reporter.reports.kind_of?(Array)
-    assert reporter.reports.first.kind_of?(DineroMailIpn::Report)
+    first_report = reporter.reports.first
+    assert first_report.kind_of?(DineroMailIpn::Report)
+    assert_equal first_report.date, Time.parse("2011-12-29 19:38:00")
   end
 
 end

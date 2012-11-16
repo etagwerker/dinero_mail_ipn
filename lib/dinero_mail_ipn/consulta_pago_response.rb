@@ -23,14 +23,14 @@ module DineroMailIpn
   #
   # ## Nota
   #
-  # Por ahora las collections de la consulta solo se pueden consultar por un hash (response.hash)
+  # Por ahora las collections de la consulta solo se pueden consultar por un hash (response.dm_hash)
   #
   # ## TODO
   #
   # Agregar más métodos de 'negocio' que tengan métodos útiles.
   class ConsultaPagoResponse
 
-    attr_accessor :hash
+    attr_accessor :dm_hash
 
     STATE_DESCRIPTIONS = {0 => 'Los parámetros no respetan el formato requerido', 1 => 'La consulta se realizó correctamente', 2 => 'Los valores son incorrectos para realizar la consulta'}
 
@@ -43,7 +43,7 @@ module DineroMailIpn
     #       "State"=>"1", "Pays"=>nil, "Collections"=>nil, "Tickets"=>nil, "Receptions"=>nil,
     #       "Retreats"=>nil, "Credits"=>nil, "Debits"=>nil}})
     def initialize(_hash)
-      self.hash = _hash
+      self.dm_hash = _hash
     end
 
     # Devuelve true si la respuesta no devolvió error
@@ -68,7 +68,8 @@ module DineroMailIpn
 
       @payments = []
       begin
-        pays = self.hash["Report"]["Pays"]["Pay"]
+        pays = self.dm_hash["Report"]["Pays"]
+
         if pays
           case pays.class.name
           when "Hash"
@@ -90,7 +91,7 @@ module DineroMailIpn
     # @raise [MalformedResponseError] Si la respuesta no tiene /Report/State
     def state
       begin
-        self.hash["Report"]["State"]
+        self.dm_hash["Report"]["State"]
       rescue Exception => e
         raise MalformedResponseError.new("No se encontró /Report/State en el XML de respuesta")
       end

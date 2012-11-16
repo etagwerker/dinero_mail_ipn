@@ -2,6 +2,7 @@
 
 require 'httparty'
 require 'nokogiri'
+require 'chronic'
 
 Dir[File.join(File.dirname(__FILE__),'dinero_mail_ipn', '*')].each {|file| require file }
 

@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = DineroMailIpn::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Ernesto Tagwerker", "Esteban Pastorino"]
-  s.email       = ["ernesto@etagwerker.com", "kito@pinggers.com"]
+  s.email       = ["ernesto@ombushop.com", "kito@pinggers.com"]
   s.homepage    = ""
   s.summary     = %q{Dinero Mail IPN gem}
   s.description = %q{Dinero Mail IPN stub}
@@ -16,6 +16,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'httparty', '~> 0.8.1'
   s.add_dependency 'nokogiri', '~> 1.5.0'
+  s.add_dependency 'chronic'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files = [
@@ -29,4 +30,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'fakeweb', '~> 1.3.0'
   s.add_development_dependency 'yard', '~> 0.7.4'
   s.add_development_dependency 'redcarpet', '~> 2.0.1'
+  s.add_development_dependency 'rake'
 end
