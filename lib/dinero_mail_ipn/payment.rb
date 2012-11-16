@@ -26,13 +26,13 @@ module DineroMailIpn
 
     # @private
     def initialize(_h)
-      @hash = _h
+      @dm_hash = _h
     end
 
     # Devuelve un {String} o nil
     # @return [String]
     def [](key)
-      @hash[key]
+      @dm_hash[key]
     end
 
     # Devuelve un {Array} de objetos tipo {Item}
@@ -42,8 +42,8 @@ module DineroMailIpn
 
       @items = []
 
-      unless @hash["Items"].nil?
-        @hash["Items"].each do |key, _h|
+      unless @dm_hash["Items"].nil?
+        @dm_hash["Items"].each do |key, _h|
           @items << Item.new(_h)
         end
       end
