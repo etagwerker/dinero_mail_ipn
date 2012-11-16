@@ -68,7 +68,7 @@ module DineroMailIpn
 
       @payments = []
       begin
-        pays = self.dm_hash["Report"]["Pays"]
+        pays = self.dm_hash["Report"]["Pays"]["Pay"]
 
         if pays
           case pays.class.name
