@@ -19,7 +19,7 @@ class TestDineroMailIpn < Test::Unit::TestCase
 
     should "return OK with 1 payment" do
       stub_get("/vender/ConsultaPago.asp?XML=1&Acount=17128254&Pin=AYCN7IXDTM&Email=ernesto%40ombushop.com&StartDate=20110702&EndDate=20110703",
-         "ConsultaPagoOKWith1Pay.xml")
+         "ConsultaPagoOkWith1Pay.xml")
       client = DineroMailIpn::Client.new(:email => 'ernesto@ombushop.com',
                                           :account => '17128254',
                                           :pin => 'AYCN7IXDTM')
