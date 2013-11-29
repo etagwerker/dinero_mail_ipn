@@ -1,5 +1,3 @@
-require 'nokogiri'
-
 module DineroMailIpn
   class NotificationParser
     attr_reader :doc
