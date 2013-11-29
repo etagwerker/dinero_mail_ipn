@@ -53,7 +53,7 @@ module DineroMailIpn
     #
     # @param filename [String] the XSD filename
     def xsd_file(filename)
-      xsd_file_location = File.expand_path("../../../resources/validation/xsd/#{filename}", __FILE__)
+      xsd_file_location = File.join(DineroMailIpn.resources_path, "/validation/xsd/#{filename}")
       xsd_file = File.read(xsd_file_location)
       xsd_file
     end

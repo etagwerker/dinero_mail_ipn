@@ -8,6 +8,14 @@ Dir[File.join(File.dirname(__FILE__),'dinero_mail_ipn', '*')].each {|file| requi
 
 module DineroMailIpn
 
+  def self.root_path
+    File.expand_path("../..", __FILE__)
+  end
+
+  def self.resources_path
+    File.expand_path(File.join(self.root_path, "resources"))
+  end
+
   # # Cliente para Dinero Mail API (v1 y v2)
   #
   # Cliente para consumir los métodos de la API IPN v1 y v2.
