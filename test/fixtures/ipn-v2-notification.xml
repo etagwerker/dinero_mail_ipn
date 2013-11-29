@@ -1,0 +1,13 @@
+<notificacion>
+  <tiponotificacion>1</tiponotificacion>
+  <operaciones>
+    <operacion>
+      <tipo>1</tipo>
+      <id>31548</id>
+    </operacion>
+    <operacion>
+      <tipo>1</tipo>
+      <id>XA5547</id>
+    </operacion>
+  </operaciones>
+</notificacion>
