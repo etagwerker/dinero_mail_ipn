@@ -28,7 +28,7 @@ module DineroMailIpn
     def initialize(opts)
       @id = opts[:id]
       @amount = opts[:amount]
-      @state = opts[:state]
+      @state = opts[:state].to_i
       @payer_email = opts[:payer_email]
       @numtransaction = opts[:numtransaction]
       @date          = opts[:date]
