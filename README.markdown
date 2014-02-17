@@ -1,6 +1,6 @@
 # Dinero Mail IPN Gem
 
-[![Build Status](https://travis-ci.org/etagwerker/dinero_mail_ipn.png?branch=master)](https://travis-ci.org/etagwerker/dinero_mail_ipn)
+[![Build Status](https://travis-ci.org/etagwerker/dinero_mail_ipn.png?branch=master)](https://travis-ci.org/etagwerker/dinero_mail_ipn) [![Code Climate](https://codeclimate.com/github/etagwerker/dinero_mail_ipn.png)](https://codeclimate.com/github/etagwerker/dinero_mail_ipn)
 
 Ruby gem para consumir los métodos de IPN 1 y IPN 2 de [Dinero
 Mail](http://dineromail.com)
