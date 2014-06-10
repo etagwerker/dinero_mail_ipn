@@ -68,14 +68,16 @@ module DineroMailIpn
 
       @payments = []
       begin
-        pays = self.dm_hash["Report"]["Pays"]["Pay"]
+        if dm_hash["Report"]["Pays"]
+          pays = dm_hash["Report"]["Pays"]["Pay"]
 
-        if pays
-          case pays.class.name
-          when "Hash"
-            @payments << Payment.new(pays)
-          when "Array"
-            pays.each { |pay| @payments << Payment.new(pay) }
+          if pays
+            case pays.class.name
+            when "Hash"
+              @payments << Payment.new(pays)
+            when "Array"
+              pays.each { |pay| @payments << Payment.new(pay) }
+            end
           end
         end
       rescue Exception => e
