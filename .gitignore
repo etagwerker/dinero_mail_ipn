@@ -1,6 +1,9 @@
+# RVM or rbenv
+.ruby-version
+.rvmrc
+
 pkg/*
 *.gem
 .bundle
 .yardoc
-.rvmrc
 doc
