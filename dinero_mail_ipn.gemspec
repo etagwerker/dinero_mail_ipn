@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'httparty', '~> 0.8.1'
   s.add_dependency 'nokogiri', '~> 1.5.0'
-  s.add_dependency 'chronic'
+  s.add_dependency 'chronic', '~> 0.10.2'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files = [
@@ -31,5 +31,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'yard', '~> 0.7.4'
   s.add_development_dependency 'redcarpet', '~> 2.0.1'
   s.add_development_dependency 'rake'
-  s.add_development_dependency 'pry'
+  s.add_development_dependency 'byebug'
 end
