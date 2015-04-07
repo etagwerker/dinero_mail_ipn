@@ -34,5 +34,5 @@ Gem::Specification.new do |s|
 
   if RUBY_VERSION > "1.9.3"
     s.add_development_dependency 'byebug'
-  END
+  end
 end
