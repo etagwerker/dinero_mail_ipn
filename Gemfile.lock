@@ -9,10 +9,6 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    byebug (3.4.1)
-      columnize (~> 0.8)
-      debugger-linecache (~> 1.2)
-      slop (~> 3.6)
     chronic (0.10.2)
     columnize (0.8.9)
     debugger-linecache (1.2.0)
@@ -33,7 +29,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  byebug
   dinero_mail_ipn!
   fakeweb (~> 1.3.0)
   rake
