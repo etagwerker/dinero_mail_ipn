@@ -31,5 +31,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'yard', '~> 0.7.4'
   s.add_development_dependency 'redcarpet', '~> 2.0.1'
   s.add_development_dependency 'rake'
-  s.add_development_dependency 'byebug'
+
+  if RUBY_VERSION > "1.9.3"
+    s.add_development_dependency 'byebug'
+  END
 end
